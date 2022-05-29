@@ -1,15 +1,7 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const userRoute = require("./routes/users");
+const router =  express.Router();
 
-const app = express();
+const auth = require("../controllers/Auth_Controllers/signUp");
 
-//mongoDB database connection
-mongoose.connect('mongodb://localhost:27017/eshopDB').
-  catch(error => console.log(error));
-
-app.use("/users", userRoute); 
-app.listen(3000, () => {
-    console.log("Server is running at port 3000.....");
-});  
+router.post("/users", auth.signUp);
+module.exports = router;

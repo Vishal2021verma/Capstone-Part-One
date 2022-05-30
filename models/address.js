@@ -12,6 +12,6 @@ const addressSchema = mongoose.Schema({
     user_id: {type: String}
 });
 //Address mongoose model
-const Address  = mongoose.model("Address", productSchema, "addresses");
+const Address  = mongoose.model("Address", addressSchema, "addresses");
 
 module.exports = Address;

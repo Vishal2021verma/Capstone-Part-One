@@ -16,11 +16,12 @@ exports.logIn = (req, res, next) => {
                 if (_err) res.status(401).json({ error: "Invalid Credentials!" });
                 else if (result) {
                     const userData = {
+                        _id: user[0]._id,
                         email: user[0].email,
                         name: user[0].f_name
                     };
                     const token = jwt.sign(userData, "MONGO_SECRET", { expiresIn: "1h" });
-                    res.status(200).header({token: token}).json({
+                    res.status(200).header("x-auth-token",token).json({
                         "isAuthenticated": true,
                         
                         userData,

@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auths");
+const addressRoute = require("./routes/addresses");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 
 app.use("/users", userRoute);
 app.use("/auth", authRoute);
+app.use("/addresses", addressRoute);
 app.get("/", function(req,res){res.send("Hi there!")}); 
 app.listen(3000, () => {
     console.log("Server is running at port 3000.....");

@@ -8,21 +8,21 @@ exports.logIn = (req, res, next) => {
     const { password, email } = req.body;
 
     User.find({ email: email }, (err, user) => {
-        if (err || user.length === 0) res.status(404).json({ error: "No user was found with this email." });
+        if (err || user.length === 0) res.status(404).json({ error: "This email has not been registered!" });
 
         else if (user.length > 0) {
             //Comparing password
             bcrypt.compare(password, user[0].password, (_err, result) => {
-                if (_err) res.status(401).json({ error: "Authentication has failed!" });
+                if (_err) res.status(401).json({ error: "Invalid Credentials!" });
                 else if (result) {
                     const userData = {
                         email: user[0].email,
                         name: user[0].f_name
                     };
                     const token = jwt.sign(userData, "MONGO_SECRET", { expiresIn: "1h" });
-                    res.status(200).json({
+                    res.status(200).header({token: token}).json({
                         "isAuthenticated": true,
-                        token: token,
+                        
                         userData,
                     });
                 } else {

@@ -9,7 +9,7 @@ var today = new Date();
 exports.signUp = (req, res) => {
     console.log(req.body);
     const { f_name, l_name, email, password, phone} = req.body;
-
+   
     User.findOne({ email })//checking if the email exits  
         .then((user) => {
             if (user) {

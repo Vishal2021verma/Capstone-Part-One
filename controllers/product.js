@@ -71,4 +71,32 @@ exports.productSave = (req, res) => {
     }
 
 }
+// 5. Update Product Details- “/products/{id}”
+exports.productPut = (req,res)=>{
+    if(req.userData.role == "admin"){
+       Product.findOneAndUpdate(req.query._id, req.body,  {new:true}, (err,updated)=>{
+           if(updated){
+               res.status(200).json(updated);
+           }else{
+               res.status(500).json(err);
+           }
+       });
+    }else{
+        res.status(401).json("You are not authorized to access this endpoint!");
+    }
+}
+// 6. Delete Product “/products/{id}” 
+exports.productDelete =(req, res) =>{
+    if(req.userData.role  == "admin"){
+        Product.findOneAndDelete(req.query._id,(err,deletedProduct)=>{
+            if(err){
+                res.status(500).json(err);
+            }else{
+                res.status(200).json(deletedProduct);
+            }
+        });
+    }else{
+        res.status(401).json("You are not authorized to access this endpoint!");
+    }
+}
 

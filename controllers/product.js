@@ -2,7 +2,10 @@ const Product = require("../models/product");
 const mongoose = require("mongoose");
 //current date
 var currentDate = new Date();
+
+//1. Search Product - "/products"
 exports.product = (req, res) => {
+    
     Product.find(function(err, foundP){
         if(foundP){
             res.status(200).json(foundP);
@@ -13,6 +16,7 @@ exports.product = (req, res) => {
 
 }
 
+// 2. Get Product Categories - “/products/categories”
 //products/categories route callback
 exports.categories = (req, res) => {
     // Product.find(function(err, foundCategory){
@@ -27,6 +31,18 @@ exports.categories = (req, res) => {
     res.status(200).json(cat);
 }
 
+// 3. Get Product by Product ID - “/products/{id}” 
+exports.productId = (req,res) => {
+    Product.findOne({_id: req.query._id}, function(err,foundProduct){
+        if(foundProduct){
+            res.status(200).json(foundProduct);
+        }else{
+            res.status(401).json({message:"No Product found for ID - <id>!"});
+        }
+    });
+}
+
+// 4. Save Product - “/products” 
 //products route post-request callback function
 //save product
 exports.productSave = (req, res) => {

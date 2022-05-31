@@ -1,11 +1,6 @@
 const Address = require("../models/address");
-const checkAuth= require("../middleware/checkauth");
 const User = require("../models/user");
-const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
-
-
 exports.address = (req, res) => {
     const {city,landmark,name,phone,state,street,zip_code,userId } = req.body;
     //add validators 

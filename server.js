@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auths");
 const addressRoute = require("./routes/addresses");
+const checkauth = require("./middleware/checkauth");
 
 const app = express();
 

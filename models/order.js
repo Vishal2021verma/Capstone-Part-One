@@ -3,13 +3,13 @@ const mongoose = require("mongoose");
 //Order Schema
 const orderSchema = mongoose.Schema({
     id:mongoose.Schema.Types.ObjectId,
-    amount: {type: double},
+    amount: {type: Number},
     order_date: {type: Date},
-    product_product_id: {type: Number},
-    shiping_address_id: {type: Number},
-    user_id: {type: Number}
+    product_product_id: {type: String},
+    shiping_address_id: {type: String},
+    user_id: {type: String}
 });
 //Order Mongoose model 
-const Order= monggose.model("Order", orderSchema,"orders");
+const Order= mongoose.model("Order", orderSchema,"orders");
 
-module.export = Order;
+module.exports = Order;

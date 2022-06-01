@@ -2,7 +2,7 @@ const Address = require("../models/address");
 const User = require("../models/user");
 const mongoose = require("mongoose");
 exports.address = (req, res) => {
-    const {city,landmark,name,phone,state,street,zip_code,userId } = req.body;
+    const {city,landmark,name,phone,state,street,zip_code} = req.body;
     //add validators 
     User.findOne({_id: req.userData},function(err,foundUser){
         if(foundUser){

@@ -30,11 +30,11 @@ app.use("/auth", authRoute);
 app.use("/addresses", addressRoute);
 app.use("/products/", productRoute);
 app.use("/orders",orderRoute);
-app.get("/", function(req,res){res.status(200).json({massage:"Data fetching from backend Successful"})});
+app.get("/home", function(req,res){return res.status(200).json([{"massage":"Data fetching from backend Successful"}])});
 
 
 app.listen(5000, () => {
-    console.log("Server is running at port 3000.....");
+    console.log("Server is running at port 5000.....");
 });     
 
 module.exports = app; 

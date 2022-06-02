@@ -3,7 +3,9 @@ const Product = require("../models/product");
 const Address = require("../models/address")
 const mongoose = require("mongoose");
 
-var currentdate = new Date();   
+var currentdate = new Date();  
+
+// Create Order - “/orders”
 exports.orderP = (req,res)=>{
     if(req.userData.role  == "USER"){
         Product.findOne({_id: req.body.productId},function(err, foundProduct){

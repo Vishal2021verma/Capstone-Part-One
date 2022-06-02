@@ -1,13 +1,13 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const validator = require("email-validator");
 
 exports.logIn = (req, res, next) => {
+    //deconstructing body object
     const { password, email } = req.body;
 
-    User.find({ email: email }, (err, user) => {
+    User.find({ email: email }, (err, user) => { //find email if exits 
         if (err || user.length === 0) res.status(404).json({ error: "This email has not been registered!" });
 
         else if (user.length > 0) {
@@ -24,7 +24,6 @@ exports.logIn = (req, res, next) => {
                     const token = jwt.sign(userData, "MONGO_SECRET", { expiresIn: "1h" });
                     res.status(200).header("x-auth-token",token).json({
                         "isAuthenticated": true,
-                        
                         userData,
                     });
                 } else {
@@ -33,5 +32,5 @@ exports.logIn = (req, res, next) => {
             });
         }
     })
-    // .catch((err) => res.status(500).json({ error: err }));
+    //] .catch((err) => res.status(500).json({ error: err }));
 };

@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
+import { Link } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -63,23 +64,28 @@ export default function ButtonAppBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            
+
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             upGrad E-Shop
           </Typography>
-          
+
           <Search>
             <SearchIconWrapper>
-          
+
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          
-          <Button color="inherit">Login</Button>
+          <li>
+            <Link to="/">Dogs</Link>
+          </li>
+          <li>
+            <Link to="/cats">Cats</Link>
+          </li>
+          <Button color="inherit">Login</Button> 
         </Toolbar>
       </AppBar>
     </Box>

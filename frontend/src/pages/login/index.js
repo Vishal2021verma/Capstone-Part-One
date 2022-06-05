@@ -13,8 +13,9 @@ export default function loginFun() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Enter email" variant="outlined" type="email" />
-      <TextField id="outlined-basic" label="Enter password" variant="outlined" type="password"/>
+      <TextField id="outlined-basic" label="Enter email" variant="outlined" type="email"   />
+      <br/>
+      <TextField id="outlined-basic" label="Enter password" variant="outlined" type="password" />
       <Button variant="contained">Login</Button>
     </Box>
   );

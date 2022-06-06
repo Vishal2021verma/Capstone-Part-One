@@ -2,16 +2,18 @@ import logo from './logo.svg';
 import react from 'react';
 import './App.css';
 import { useState, useEffect } from "react";
-import Navbar from "./components/navigation"
-import Login from './pages/login';
+import Navbar from "./components/top_navigation"
+
 
 
 function App() {
  
   
   return (
-    <Login/>   
-    
+    <main>
+    <Navbar />
+   
+    </main> 
     ); 
 }
 
